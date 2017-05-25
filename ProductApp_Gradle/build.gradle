@@ -1,0 +1,47 @@
+// Apply the java plugin to add support for Java
+apply plugin: 'java'
+
+group = 'ProductApp_Gradle'
+version = '0.0.1-SNAPSHOT'
+
+description = 'Product Application Using Gradle'
+
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+ 
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+   //Configure maven Repositories here
+   maven{
+   url "http://repo.maven.apache.org/maven2"
+}
+
+dependencies {
+   //Configure All dependencies Here
+  testCompile 'junit:junit:4.12'
+  compile 'org.mockito:mockito-all:1.101.19'
+}
+
+//Wrapper task for Gradle Version
+task wrapper(type: Wrapper){
+	gradleVersion = '2.6'
+}
+task hello {
+    doLast {
+        println 'Hello Earth'
+    }
+}
+hello.doFirst {
+    println 'Hello Venus'
+}
+hello.doLast {
+    println 'Hello Mars'
+}
+hello {
+    doLast {
+        println 'Hello Jupiter'
+    }
+}
